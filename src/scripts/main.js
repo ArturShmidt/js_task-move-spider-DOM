@@ -17,17 +17,17 @@ document.addEventListener('click', (e) => {
   const borderRight = parseFloat(getComputedStyle(wall).borderRightWidth);
   const borderBottom = parseFloat(getComputedStyle(wall).borderBottomWidth);
 
-  let x = e.clientX - wallRect.left - spiderRect.width / 2;
-  let y = e.clientY - wallRect.top - spiderRect.height / 2;
+  let x = e.clientX - wallRect.left - spiderRect.width / 2 - borderLeft;
+  let y = e.clientY - wallRect.top - spiderRect.height / 2 - borderTop;
 
-  const maxX = wallRect.width - spiderRect.width - borderRight * 2;
-  const maxY = wallRect.height - spiderRect.height - borderBottom * 2;
+  const maxX = wallRect.width - spiderRect.width - borderLeft - borderRight;
+  const maxY = wallRect.height - spiderRect.height - borderTop - borderBottom;
 
-  if (x < borderLeft) {
+  if (x < 0) {
     x = 0;
   }
 
-  if (y < borderTop) {
+  if (y < 0) {
     y = 0;
   }
 
